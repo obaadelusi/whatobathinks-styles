@@ -1,6 +1,6 @@
 /*!
-  * Understrap v1.1.0 (https://understrap.com)
-  * Copyright 2013-2022 The Understrap Authors (https://github.com/understrap/understrap/graphs/contributors)
+  * Understrap v1.1.0 (https://whatobathinks.com)
+  * Copyright 2013-2022 The Understrap Authors (https://github.com/obaadelusi)
   * Licensed under GPL (http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
   */
 (function (global, factory) {
@@ -9297,14 +9297,14 @@
 	})();
 
 	// Add your custom JS here.
-	const navButton = document.getElementById('navbarButton');
-	const mobileMenu = document.getElementById('mobileMenu');
-	navButton.addEventListener('click', () => {
-	  if (mobileMenu.style.display == 'none') {
-	    mobileMenu.style.display == 'block';
-	  } else mobileMenu.style.display == 'none';
+	const navButton = document.querySelector('#navbarButton');
+	const mobileMenu = document.querySelector('#mobileMenu');
+	navButton.addEventListener('click', e => {
+	  e.stopPropagation();
 
-	  console.log(mobileMenu);
+	  if (mobileMenu.classList.contains('active')) {
+	    mobileMenu.classList.remove('active');
+	  } else mobileMenu.classList.add('active');
 	});
 
 	exports.Alert = alert;

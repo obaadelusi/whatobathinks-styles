@@ -12454,16 +12454,22 @@ a.skip-link {
   display: block;
 }
 
-/*  # Defaults ------>
+/*  # DEFAULTS ------>
         - Typography
         - Buttons
-    # Sections ------>
+    # HOME PAGE ------>
         - Header/Navbar section
         - Hero section
         - Info section
         - Portfolio section
         - Blog section
         - Contact section
+        - Media Queries
+    # BLOG PAGE ------>
+*/
+/*==============================
+          HOME PAGE
+==============================
 */
 body {
   font-family: "Source Sans Pro", sans-serif;
@@ -12471,8 +12477,12 @@ body {
 
 .site {
   position: relative;
+  min-height: 100vh;
 }
 
+/**************** 
+      Typography 
+****************/
 h1, .h1,
 h2,
 .h2,
@@ -12547,6 +12557,9 @@ figcaption {
   color: #adb5bd;
 }
 
+/**************** 
+      Buttons 
+****************/
 .button, #main-nav .navbar__button, .button--pry {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -12572,7 +12585,13 @@ figcaption {
   color: #fff;
 }
 
-/* <-------- Sections -------> */
+/*==============================
+          HOME PAGE
+==============================
+*/
+/**************** 
+      Header/Navbar 
+****************/
 #wrapper-navbar {
   position: -webkit-sticky;
   position: sticky;
@@ -12614,7 +12633,13 @@ figcaption {
   color: #fff;
   width: 100%;
   margin-top: 1em;
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 75%;
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 200ms ease-in-out, opacity 200ms ease;
 }
 #main-nav .mobile_menu__links {
   list-style: none;
@@ -12629,7 +12654,9 @@ figcaption {
   color: #fff;
 }
 #main-nav .mobile_menu.active {
-  display: block;
+  opacity: 1;
+  pointer-events: all;
+  transform: scaleY(1);
 }
 
 @media (max-width: 992px) {
@@ -12651,6 +12678,9 @@ figcaption {
   border-bottom: 1px solid #fca311;
 }
 
+/**************** 
+      Hero 
+****************/
 .hero {
   background-position: center center;
   background-repeat: no-repeat;
@@ -12724,8 +12754,12 @@ figcaption {
     height: 82vh;
   }
 }
+/**************** 
+      Info 
+****************/
 .info {
   padding: 60px 20px;
+  background-color: #f9f9f9;
 }
 .info__container {
   display: flex;
@@ -12793,6 +12827,7 @@ figcaption {
   background-color: #fff;
   border-radius: 0.5em;
   padding: 1em;
+  border: 1px solid #ced4da;
 }
 
 @media (min-width: 820px) {
@@ -12810,6 +12845,9 @@ figcaption {
     flex: 1 1 48%;
   }
 }
+/**************** 
+      Portfolio 
+****************/
 .portfolio {
   padding: 60px 20px;
   background-color: #fff;
@@ -12839,6 +12877,9 @@ figcaption {
     justify-content: center;
   }
 }
+/**************** 
+      Blog 
+****************/
 .blogs {
   display: flex;
   justify-content: center;
@@ -12864,9 +12905,11 @@ figcaption {
   color: #0d6efd;
 }
 
+/**************** 
+      Contact 
+****************/
 .contact {
   background-color: #f5f5ff;
-  border-top: 1px solid #fca311;
   padding: 60px 20px;
   display: flex;
   flex-direction: column;
@@ -12904,7 +12947,7 @@ figcaption {
   color: #fca311;
 }
 .contact__text {
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
   font-weight: 600;
   color: #000;
 }
@@ -12926,8 +12969,7 @@ figcaption {
   gap: 0.5em;
 }
 .contact__group > * {
-  flex-grow: 1;
-  flex-shrink: 1;
+  max-width: 70px;
 }
 .contact__group .contact__channel {
   flex-direction: column;
@@ -12941,6 +12983,93 @@ figcaption {
 .blogs,
 .contact {
     padding: 100px 2vw;
+  }
+}
+/**************** 
+      Footer 
+****************/
+#wrapper-footer {
+  height: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0d1267;
+  color: #6c757d;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/*==============================
+          BLOG PAGE
+==============================
+*/
+/**************** 
+      Posts 
+****************/
+.posts__header {
+  background: linear-gradient(90deg, #fff, #e5e5e5);
+  text-align: center;
+  padding: 2.5em 1em;
+}
+.posts__header h1, .posts__header .h1 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.posts__header h1 span, .posts__header .h1 span {
+  color: #fca311;
+}
+.posts__header p {
+  max-width: 400px;
+  margin: auto;
+}
+.posts__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  max-width: 800px;
+  padding: 2em 0;
+  margin: auto;
+}
+.posts__single {
+  margin-bottom: 2.5em;
+}
+.posts__image img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.posts__meta {
+  display: flex;
+  gap: 2em;
+  margin-bottom: 0.5em;
+}
+.posts__meta i {
+  color: #fca311;
+}
+.posts__meta__text {
+  font-size: 0.75rem;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.posts__title {
+  font-weight: 500;
+  letter-spacing: -1px;
+  font-size: clamp(1.375rem, 2vw, 1.875rem);
+}
+
+@media (min-width: 801px) {
+  .posts__single {
+    display: flex;
+    gap: 2em;
+  }
+  .posts__image {
+    flex: 0 0 35%;
+    height: 180px;
   }
 }
 .has-blue-color,
