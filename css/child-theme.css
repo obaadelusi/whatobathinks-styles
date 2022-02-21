@@ -50,7 +50,7 @@
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 255, 255, 255;
-  --bs-font-sans-serif: "Source Sans Pro", sans-serif;
+  --bs-font-sans-serif: "Nunito", sans-serif;
   --bs-font-monospace: "Fira Code", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
@@ -12457,6 +12457,7 @@ a.skip-link {
 /*  # DEFAULTS ------>
         - Typography
         - Buttons
+        - WP Blocks
     # HOME PAGE ------>
         - Header/Navbar section
         - Hero section
@@ -12466,18 +12467,25 @@ a.skip-link {
         - Contact section
         - Media Queries
     # BLOG PAGE ------>
+    # SINGLE POST ----->
 */
 /*==============================
           HOME PAGE
 ==============================
 */
+html {
+  height: 100%;
+}
+
 body {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Nunito", sans-serif;
+  height: 100%;
 }
 
 .site {
   position: relative;
-  min-height: 100vh;
+  min-height: 100%;
+  padding-bottom: 3em;
 }
 
 /**************** 
@@ -12540,15 +12548,11 @@ li {
 a {
   font-size: inherit;
   color: #0d1267;
-  -webkit-text-decoration: 2px underline transparent;
-  text-decoration: 2px underline transparent;
-  transition: -webkit-text-decoration-color 200ms ease-in-out;
-  transition: text-decoration-color 200ms ease-in-out;
-  transition: text-decoration-color 200ms ease-in-out, -webkit-text-decoration-color 200ms ease-in-out;
+  text-decoration: none;
 }
 a:hover {
-  -webkit-text-decoration-color: #fca311;
-  text-decoration-color: #fca311;
+  -webkit-text-decoration: 2px underline #fca311;
+  text-decoration: 2px underline #fca311;
 }
 
 figcaption {
@@ -12585,6 +12589,28 @@ figcaption {
   color: #fff;
 }
 
+/**************** 
+      WP Blocks 
+****************/
+.wp-block-quote {
+  border-left: 6px solid #0d1267;
+  padding-left: 1em;
+  margin-bottom: 1em;
+}
+
+.wp-block-pullquote {
+  border-top: 4px solid #e9ecef;
+  border-bottom: 4px solid #e9ecef;
+  max-width: 480px;
+  margin: 0 auto 1em;
+}
+.wp-block-pullquote cite {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
 /*==============================
           HOME PAGE
 ==============================
@@ -12614,6 +12640,9 @@ figcaption {
 }
 #main-nav .dropdown-item {
   padding: 0.75em 1em;
+}
+#main-nav .current-menu-item a {
+  color: #495057;
 }
 #main-nav .social-icons {
   display: flex;
@@ -12664,6 +12693,10 @@ figcaption {
     max-width: 160px;
   }
   #main-nav .social-icons {
+    margin-left: auto;
+    margin-right: 1.25em;
+  }
+  #main-nav .social-icons :not(:first-child) {
     display: none;
   }
   #main-nav .navbar__button {
@@ -12699,6 +12732,7 @@ figcaption {
   text-align: left;
   font-weight: bold;
   letter-spacing: 1.5px;
+  line-height: 1.2;
   color: #0d1267;
 }
 .hero__profile p span {
@@ -12788,7 +12822,7 @@ figcaption {
 .info .experience__point__text h3,
 .info .experience__point__text .h3 {
   font-size: clamp(1rem, 2vw, 1.25rem);
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Nunito", sans-serif;
   color: #495057;
   line-height: 1.4;
 }
@@ -12815,7 +12849,7 @@ figcaption {
 }
 .info .skills__stack h3, .info .skills__stack .h3 {
   font-size: clamp(1rem, 2vw, 1.25rem);
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Nunito", sans-serif;
   color: #495057;
   font-weight: 600;
 }
@@ -12869,6 +12903,9 @@ figcaption {
 }
 .portfolio a {
   color: #0d6efd;
+  background-color: #e9ecef;
+  border-radius: 0.5em;
+  padding: 0.25em 0.5em;
 }
 
 @media (min-width: 820px) {
@@ -12932,10 +12969,10 @@ figcaption {
   justify-content: space-between;
   align-items: center;
   margin-top: 1em;
-  text-decoration: none;
   transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out, transform 200ms ease-out;
 }
 .contact__channel:hover {
+  text-decoration: none;
   background-color: #f5f5ff;
   border-color: #0d1267;
   transform: scale(1.02);
@@ -12969,14 +13006,22 @@ figcaption {
   gap: 0.5em;
 }
 .contact__group > * {
-  max-width: 70px;
+  flex-shrink: 1;
+  flex-grow: 1;
 }
 .contact__group .contact__channel {
-  flex-direction: column;
   flex-wrap: wrap;
-  gap: 0.5em;
+  gap: 0.25em;
 }
 
+@media (max-width: 390px) {
+  .contact__group .contact__channel :nth-child(1) {
+    order: 2;
+  }
+  .contact__group .contact__channel :nth-child(2) {
+    order: 1;
+  }
+}
 @media (min-width: 820px) {
   .info,
 .portfolio,
@@ -13036,6 +13081,9 @@ figcaption {
 .posts__single {
   margin-bottom: 2.5em;
 }
+.posts__image {
+  height: 180px;
+}
 .posts__image img {
   -o-object-fit: cover;
   object-fit: cover;
@@ -13054,7 +13102,6 @@ figcaption {
   font-size: 0.75rem;
   color: #6c757d;
   text-transform: uppercase;
-  letter-spacing: 1px;
 }
 .posts__title {
   font-weight: 500;
@@ -13069,9 +13116,85 @@ figcaption {
   }
   .posts__image {
     flex: 0 0 35%;
-    height: 180px;
   }
 }
+/*===========================
+          SINGLE POST
+==============================
+*/
+/**************** 
+      Article 
+****************/
+.post :is(h2, .h2, h3, .h3, h4, .h4) + :is(p, ul, ol) {
+  margin-top: 1em;
+}
+.post__container {
+  padding: 3em 0 2em;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.post__header {
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.post__header > * {
+  margin: 0;
+}
+.post__breadcrumbs * {
+  color: #adb5bd;
+}
+.post__meta, .post__excerpt {
+  color: #6c757d;
+}
+.post__content a {
+  color: #0d6efd;
+}
+.post__tags {
+  background-color: #e9ecef;
+  padding: 1em;
+  border-radius: 0.5em;
+  margin-top: 2em;
+}
+
+/**************** 
+   Comments & Post Nav 
+****************/
+.comments-area,
+.post-navigation,
+.post__related {
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2em 0;
+}
+
+.post-navigation {
+  background-color: #f8f9fa;
+  padding: 1em;
+  border-radius: 0.5em;
+}
+
+.comment {
+  margin-bottom: 2em;
+}
+.comment-list li::marker {
+  content: "🟢";
+}
+.comment-content p {
+  margin: 0;
+}
+.comment-reply-link {
+  color: #0d6efd;
+}
+.comment-edit-link {
+  margin-left: 0.5em;
+  -webkit-text-decoration: 2px underline #0d1267;
+  text-decoration: 2px underline #0d1267;
+}
+
 .has-blue-color,
 .has-blue-color:visited {
   color: #0d6efd;
