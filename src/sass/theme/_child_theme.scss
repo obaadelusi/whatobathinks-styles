@@ -39,30 +39,30 @@ h1,
 h2,
 h3,
 h4 {
-   font-family: $font-family-monospace;
+   font-family: $font-family-heading;
    color: $primary;
    margin-bottom: 0.3em;
-   line-height: 1;
+   line-height: 1.2;
 }
 h1 {
    font-size: $h1-font-size;
-   font-weight: 500;
-   letter-spacing: -4px;
+   font-weight: 400;
+   letter-spacing: -1px;
 }
 
 h2 {
    font-size: $h2-font-size;
-   font-weight: 700;
+   font-weight: 600;
 }
 
 h3 {
    font-size: $h3-font-size;
-   font-weight: 500;
+   font-weight: 400;
 }
 
 h4 {
    font-size: $h4-font-size;
-   font-weight: 700;
+   font-weight: 600;
 }
 
 p,
@@ -73,7 +73,7 @@ li {
    color: $gray-700;
 }
 p {
-   margin-bottom: 1em;
+   margin-bottom: 1.5em;
 }
 li {
    margin-bottom: 0.75em;
@@ -85,9 +85,11 @@ li {
 
 a {
    font-size: inherit;
+   font-weight: inherit;
    color: $primary;
    text-decoration: none;
-   &:hover {
+   &:hover,
+   &:active {
       text-decoration: 2px underline $secondary;
    }
 }
@@ -112,16 +114,55 @@ figcaption {
    font-size: $font-size-regular;
    color: $white;
    cursor: pointer;
+   &:hover {
+      text-decoration: none;
+   }
 
    &--pry {
       @extend .button;
-      text-shadow: 0 0px 3px rgba(#000, 0.5);
+      text-shadow: 0 0px 3px rgba(#000, 0.3);
       border: 2px solid $secondary;
       background-color: $secondary;
       background: linear-gradient(#ffb800, $secondary);
       &:hover {
-         background: linear-gradient($secondary, #ffb800);
+         background: linear-gradient($secondary, $secondary);
          color: $white;
+      }
+   }
+
+   &__share {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5em 0.75em;
+      border-radius: 0.5em;
+      color: $white;
+      font-size: $font-size-small;
+      text-decoration: none;
+      transition: all 300ms ease-in-out;
+      &:hover {
+         opacity: 0.8;
+         text-decoration: none;
+         color: $white;
+      }
+      &--fb {
+         @extend .button__share;
+         background-color: #3b5998;
+      }
+      &--wa {
+         @extend .button__share;
+         background-color: #25d366;
+      }
+      &--tw {
+         @extend .button__share;
+         background-color: #26a7de;
+      }
+      &--li {
+         @extend .button__share;
+         background-color: #0077b5;
+      }
+      &--em {
+         @extend .button__share;
+         background-color: #dd5143;
       }
    }
 }
@@ -132,19 +173,20 @@ figcaption {
 .wp-block-quote {
    border-left: 6px solid $primary;
    padding-left: 1em;
-   margin-bottom: 1em;
+   margin-bottom: 1.5em;
 }
 
 .wp-block-pullquote {
    border-top: 4px solid $gray-200;
    border-bottom: 4px solid $gray-200;
    max-width: 480px;
-   margin: 0 auto 1em;
+   margin: 0 auto 1.5em;
    cite {
       text-transform: uppercase;
       font-size: 12px;
       font-style: normal;
       letter-spacing: 1px;
+      position: static;
    }
 }
 
@@ -158,6 +200,7 @@ figcaption {
 #wrapper-navbar {
    position: sticky;
    top: 0;
+   z-index: 1000;
 }
 
 #main-nav {
@@ -166,11 +209,10 @@ figcaption {
    }
 
    .nav-item {
-      font-family: $font-family-monospace;
       margin-right: 3vw;
       margin-bottom: 0;
       color: $primary;
-      font-size: $font-size-small;
+      font-weight: 700;
       line-height: 1;
    }
    .dropdown {
@@ -242,7 +284,7 @@ figcaption {
 @media (max-width: 992px) {
    #main-nav {
       .navbar-brand {
-         max-width: 160px;
+         max-width: 150px;
       }
       .social-icons {
          margin-left: auto;
@@ -299,6 +341,7 @@ figcaption {
          color: $gray-900;
          font-size: clamp(4rem, 7vw, 6.25rem);
          font-weight: 700;
+         font-family: $font-family-style;
       }
       p {
          font-size: $font-size-large;
@@ -480,7 +523,7 @@ figcaption {
       color: $blue-500;
       background-color: $gray-200;
       border-radius: 0.5em;
-      padding: 0.25em 0.5em;
+      padding: 0.125em 0.5em;
    }
 }
 
@@ -510,7 +553,7 @@ figcaption {
    &__post {
       margin-bottom: 2em;
       &__title {
-         letter-spacing: -1px;
+         letter-spacing: 0px;
          a {
             color: $gray-800;
          }
@@ -532,9 +575,9 @@ figcaption {
    justify-content: center;
    align-items: center;
 
-   .contact__container {
+   &__container {
       width: 100%;
-      max-width: 400px;
+      max-width: 720px;
    }
 
    h2 {
@@ -544,12 +587,14 @@ figcaption {
    &__channel {
       background-color: #fff;
       border: 2px solid $secondary;
-      padding: 1em 1.5em;
+      padding: 0.875em 1.25em;
       border-radius: 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 1em;
+      min-width: 120px;
+      width: 100%;
+      max-width: 160px;
       transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out, transform 200ms ease-out;
    }
 
@@ -568,21 +613,22 @@ figcaption {
    }
 
    &__text {
-      font-size: $h4-font-size;
+      font-size: $font-size-regular;
       font-weight: 600;
       color: #000;
    }
 
    &__icon {
       background-color: $primary-100;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       text-align: center;
       border-radius: 50%;
       transition: background-color 200ms ease-out;
       i {
          margin-top: 15px;
-         font-size: 1.25rem;
+         font-size: 1.125rem;
+         line-height: 0.6;
       }
    }
 
@@ -590,27 +636,8 @@ figcaption {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5em;
-      > * {
-         flex-shrink: 1;
-         flex-grow: 1;
-      }
-      .contact__channel {
-         flex-wrap: wrap;
-         gap: 0.25em;
-      }
-   }
-}
-
-@media (max-width: 390px) {
-   .contact__group {
-      .contact__channel {
-         :nth-child(1) {
-            order: 2;
-         }
-         :nth-child(2) {
-            order: 1;
-         }
-      }
+      justify-content: center;
+      margin-top: 2em;
    }
 }
 
@@ -675,11 +702,11 @@ figcaption {
    }
 
    &__single {
-      margin-bottom: 2.5em;
+      margin-bottom: 3em;
    }
 
    &__image {
-      height: 180px;
+      height: 200px;
       img {
          object-fit: cover;
          height: 100%;
@@ -690,7 +717,7 @@ figcaption {
    &__meta {
       display: flex;
       gap: 2em;
-      margin-bottom: 0.5em;
+      margin-bottom: 0.25em 0 0.5em;
       i {
          color: $secondary;
       }
@@ -702,13 +729,13 @@ figcaption {
    }
 
    &__title {
-      font-weight: 500;
+      font-weight: 400;
+      font-size: $h2-font-size;
       letter-spacing: -1px;
-      font-size: $h3-font-size;
    }
 }
 
-@media (min-width: 801px) {
+@media (min-width: 680px) {
    .posts {
       &__single {
          display: flex;
@@ -716,6 +743,7 @@ figcaption {
       }
       &__image {
          flex: 0 0 35%;
+         height: 180px;
       }
    }
 }
@@ -733,14 +761,14 @@ figcaption {
    }
 
    &__container {
-      padding: 3em 0 2em;
+      padding: 2em 0;
       width: 100%;
-      max-width: 720px;
+      max-width: 740px;
       margin: 0 auto;
    }
 
    &__header {
-      margin-bottom: 1em;
+      margin-bottom: 4em;
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -749,25 +777,65 @@ figcaption {
       }
    }
 
-   &__breadcrumbs * {
-      color: $gray-500;
-   }
-
+   &__breadcrumbs *,
    &__meta,
    &__excerpt {
       color: $gray-600;
    }
 
+   &__image {
+      height: auto;
+      width: 100%;
+      img {
+         object-fit: cover;
+         height: 100%;
+         width: 100%;
+      }
+   }
+
    &__content {
+      p,
+      li {
+         font-size: $font-size-large;
+      }
       a {
          color: $blue-500;
       }
    }
    &__tags {
-      background-color: $gray-200;
+      background-color: $gray-100;
       padding: 1em;
       border-radius: 0.5em;
-      margin-top: 2em;
+      margin-top: 3em;
+   }
+
+   &__share {
+      background-color: $gray-200;
+      padding: 1em !important;
+      border-radius: 0.5em;
+      &__heading {
+         margin-bottom: 1em;
+         font-size: $font-size-large;
+         i {
+            color: $secondary;
+         }
+      }
+      &__buttons {
+         display: flex;
+         gap: 0.5em;
+         flex-wrap: wrap;
+      }
+   }
+}
+
+@media (min-width: 576px) {
+   .post__image {
+      height: 420px;
+   }
+   .post__container {
+      padding: 2em 1em;
+      border-left: 1px solid $primary-100;
+      border-right: 1px solid $primary-100;
    }
 }
 
@@ -775,18 +843,12 @@ figcaption {
    Comments & Post Nav 
 ****************/
 .comments-area,
-.post-navigation,
-.post__related {
+.post__related,
+.post__share {
    max-width: 720px;
-   width: 100%;
+   width: 90%;
    margin: 0 auto;
    padding: 2em 0;
-}
-
-.post-navigation {
-   background-color: $gray-100;
-   padding: 1em;
-   border-radius: 0.5em;
 }
 
 .comment {
