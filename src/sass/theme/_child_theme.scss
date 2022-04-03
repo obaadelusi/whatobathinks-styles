@@ -52,7 +52,7 @@ h1 {
 
 h2 {
    font-size: $h2-font-size;
-   font-weight: 600;
+   font-weight: 500;
 }
 
 h3 {
@@ -126,6 +126,20 @@ figcaption {
       background: linear-gradient(#ffb800, $secondary);
       &:hover {
          background: linear-gradient($secondary, $secondary);
+         color: $white;
+      }
+   }
+
+   &--sec {
+      @extend .button;
+      font-size: $font-size-small;
+      color: $primary;
+      border: 2px solid $secondary;
+      background-color: $white;
+      transition: all 200ms ease-in-out;
+      &:hover {
+         background-color: $secondary;
+         text-shadow: 0 0px 3px rgba(#000, 0.3);
          color: $white;
       }
    }
@@ -212,7 +226,7 @@ figcaption {
       margin-right: 3vw;
       margin-bottom: 0;
       color: $primary;
-      font-weight: 700;
+      font-weight: 600;
       line-height: 1;
    }
    .dropdown {
@@ -227,7 +241,7 @@ figcaption {
    }
 
    .current-menu-item a {
-      color: $gray-700;
+      text-decoration: 2px underline $secondary;
    }
 
    .social-icons {
@@ -342,6 +356,8 @@ figcaption {
          font-size: clamp(4rem, 7vw, 6.25rem);
          font-weight: 700;
          font-family: $font-family-style;
+         line-height: 1;
+         letter-spacing: -4px;
       }
       p {
          font-size: $font-size-large;
@@ -511,7 +527,7 @@ figcaption {
       text-align: center;
    }
    &__project {
-      margin-bottom: 2em;
+      margin-bottom: 4em;
       img {
          margin: 0.5em auto;
       }
@@ -552,11 +568,9 @@ figcaption {
    }
    &__post {
       margin-bottom: 2em;
-      &__title {
-         letter-spacing: 0px;
-         a {
-            color: $gray-800;
-         }
+      &__title a {
+         color: $gray-800;
+         font-weight: 500;
       }
       p a {
          color: $blue-500;
@@ -586,7 +600,7 @@ figcaption {
 
    &__channel {
       background-color: #fff;
-      border: 2px solid $secondary;
+      border: 2px solid $gray-400;
       padding: 0.875em 1.25em;
       border-radius: 1rem;
       display: flex;
@@ -602,7 +616,6 @@ figcaption {
       text-decoration: none;
       background-color: $primary-100;
       border-color: $primary;
-      transform: scale(1.02);
 
       .contact__icon {
          background-color: #fff;
@@ -729,9 +742,7 @@ figcaption {
    }
 
    &__title {
-      font-weight: 400;
-      font-size: $h2-font-size;
-      letter-spacing: -1px;
+      font-size: $h3-font-size;
    }
 }
 
@@ -757,14 +768,15 @@ figcaption {
 ****************/
 .post {
    :is(h2, h3, h4) + :is(p, ul, ol) {
-      margin-top: 1em;
+      margin-top: 0.5em;
    }
 
    &__container {
-      padding: 2em 0;
+      padding: 2em 0 0.5em;
       width: 100%;
-      max-width: 740px;
-      margin: 0 auto;
+      max-width: 760px;
+      margin: 0 auto 2em;
+      background-color: $white;
    }
 
    &__header {
@@ -784,6 +796,7 @@ figcaption {
    }
 
    &__image {
+      min-height: 300px;
       height: auto;
       width: 100%;
       img {
@@ -828,14 +841,16 @@ figcaption {
    }
 }
 
-@media (min-width: 576px) {
+@media (min-width: 770px) {
    .post__image {
       height: 420px;
    }
    .post__container {
-      padding: 2em 1em;
-      border-left: 1px solid $primary-100;
-      border-right: 1px solid $primary-100;
+      padding-left: 2em;
+      padding-right: 2em;
+      border-left: 1px solid $gray-300;
+      border-right: 1px solid $gray-300;
+      background-color: $gray-100;
    }
 }
 
@@ -866,5 +881,13 @@ figcaption {
    &-edit-link {
       margin-left: 0.5em;
       text-decoration: 2px underline $primary;
+   }
+   &-metadata,
+   &-reply-link,
+   &-edit-link {
+      font-size: 0.875rem;
+   }
+   &-content p {
+      font-size: $font-size-small;
    }
 }

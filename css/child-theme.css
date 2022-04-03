@@ -50,7 +50,7 @@
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 255, 255, 255;
-  --bs-font-sans-serif: "Nunito", sans-serif;
+  --bs-font-sans-serif: "Public Sans", sans-serif;
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
@@ -106,7 +106,7 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 }
 
 h1, .h1 {
-  font-size: clamp(2.375rem, 4vw, 2.875rem);
+  font-size: clamp(2.375rem, 4vw, 2.75rem);
 }
 
 h2, .h2 {
@@ -114,7 +114,7 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  font-size: clamp(1.375rem, 2vw, 1.875rem);
+  font-size: clamp(1.375rem, 2.5vw, 1.875rem);
 }
 
 h4, .h4 {
@@ -8575,7 +8575,7 @@ textarea.form-control-lg {
 }
 
 .fs-1 {
-  font-size: clamp(2.375rem, 4vw, 2.875rem) !important;
+  font-size: clamp(2.375rem, 4vw, 2.75rem) !important;
 }
 
 .fs-2 {
@@ -8583,7 +8583,7 @@ textarea.form-control-lg {
 }
 
 .fs-3 {
-  font-size: clamp(1.375rem, 2vw, 1.875rem) !important;
+  font-size: clamp(1.375rem, 2.5vw, 1.875rem) !important;
 }
 
 .fs-4 {
@@ -12478,7 +12478,7 @@ html {
 }
 
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: "Public Sans", sans-serif;
   height: 100%;
 }
 
@@ -12498,25 +12498,25 @@ h3,
 .h3,
 h4,
 .h4 {
-  font-family: "Oswald", monospace;
+  font-family: "Jost", sans-serif;
   color: #0d1267;
   margin-bottom: 0.3em;
   line-height: 1.2;
 }
 
 h1, .h1 {
-  font-size: clamp(2.375rem, 4vw, 2.875rem);
+  font-size: clamp(2.375rem, 4vw, 2.75rem);
   font-weight: 400;
   letter-spacing: -1px;
 }
 
 h2, .h2 {
   font-size: clamp(1.875rem, 3vw, 2.375rem);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 h3, .h3 {
-  font-size: clamp(1.375rem, 2vw, 1.875rem);
+  font-size: clamp(1.375rem, 2.5vw, 1.875rem);
   font-weight: 400;
 }
 
@@ -12565,7 +12565,7 @@ figcaption {
 /**************** 
       Buttons 
 ****************/
-.button, #main-nav .navbar__button, .button--pry {
+.button, #main-nav .navbar__button, .button--sec, .button--pry {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -12579,7 +12579,7 @@ figcaption {
   color: #fff;
   cursor: pointer;
 }
-.button:hover, #main-nav .navbar__button:hover, .button--pry:hover {
+.button:hover, #main-nav .navbar__button:hover, .button--sec:hover, .button--pry:hover {
   text-decoration: none;
 }
 .button--pry {
@@ -12590,6 +12590,18 @@ figcaption {
 }
 .button--pry:hover {
   background: linear-gradient(#fca311, #fca311);
+  color: #fff;
+}
+.button--sec {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  color: #0d1267;
+  border: 2px solid #fca311;
+  background-color: #fff;
+  transition: all 200ms ease-in-out;
+}
+.button--sec:hover {
+  background-color: #fca311;
+  text-shadow: 0 0px 3px rgba(0, 0, 0, 0.3);
   color: #fff;
 }
 .button__share, .button__share--em, .button__share--li, .button__share--tw, .button__share--wa, .button__share--fb {
@@ -12667,7 +12679,7 @@ figcaption {
   margin-right: 3vw;
   margin-bottom: 0;
   color: #0d1267;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
 }
 #main-nav .dropdown-menu li {
@@ -12677,7 +12689,8 @@ figcaption {
   padding: 0.75em 1em;
 }
 #main-nav .current-menu-item a {
-  color: #495057;
+  -webkit-text-decoration: 2px underline #fca311;
+  text-decoration: 2px underline #fca311;
 }
 #main-nav .social-icons {
   display: flex;
@@ -12777,7 +12790,9 @@ figcaption {
   color: #212529;
   font-size: clamp(4rem, 7vw, 6.25rem);
   font-weight: 700;
-  font-family: "Playfair Display", serif;
+  font-family: "Fira Code", monospace;
+  line-height: 1;
+  letter-spacing: -4px;
 }
 .hero__role p {
   font-size: clamp(1.125rem, 2vw, 1.25rem);
@@ -12858,7 +12873,7 @@ figcaption {
 .info .experience__point__text h3,
 .info .experience__point__text .h3 {
   font-size: clamp(1.125rem, 2vw, 1.25rem);
-  font-family: "Nunito", sans-serif;
+  font-family: "Public Sans", sans-serif;
   color: #495057;
   line-height: 1.4;
 }
@@ -12885,7 +12900,7 @@ figcaption {
 }
 .info .skills__stack h3, .info .skills__stack .h3 {
   font-size: clamp(1.125rem, 2vw, 1.25rem);
-  font-family: "Nunito", sans-serif;
+  font-family: "Public Sans", sans-serif;
   color: #495057;
   font-weight: 600;
 }
@@ -12929,7 +12944,7 @@ figcaption {
   text-align: center;
 }
 .portfolio__project {
-  margin-bottom: 2em;
+  margin-bottom: 4em;
 }
 .portfolio__project img {
   margin: 0.5em auto;
@@ -12968,11 +12983,9 @@ figcaption {
 .blogs__post {
   margin-bottom: 2em;
 }
-.blogs__post__title {
-  letter-spacing: 0px;
-}
 .blogs__post__title a {
   color: #343a40;
+  font-weight: 500;
 }
 .blogs__post p a {
   color: #0d6efd;
@@ -12998,7 +13011,7 @@ figcaption {
 }
 .contact__channel {
   background-color: #fff;
-  border: 2px solid #fca311;
+  border: 2px solid #ced4da;
   padding: 0.875em 1.25em;
   border-radius: 1rem;
   display: flex;
@@ -13013,7 +13026,6 @@ figcaption {
   text-decoration: none;
   background-color: #f5f5ff;
   border-color: #0d1267;
-  transform: scale(1.02);
 }
 .contact__channel:hover .contact__icon {
   background-color: #fff;
@@ -13129,9 +13141,7 @@ figcaption {
   text-transform: uppercase;
 }
 .posts__title {
-  font-weight: 400;
-  font-size: clamp(1.875rem, 3vw, 2.375rem);
-  letter-spacing: -1px;
+  font-size: clamp(1.375rem, 2.5vw, 1.875rem);
 }
 
 @media (min-width: 680px) {
@@ -13152,13 +13162,14 @@ figcaption {
       Article 
 ****************/
 .post :is(h2, .h2, h3, .h3, h4, .h4) + :is(p, ul, ol) {
-  margin-top: 1em;
+  margin-top: 0.5em;
 }
 .post__container {
-  padding: 2em 0;
+  padding: 2em 0 0.5em;
   width: 100%;
-  max-width: 740px;
-  margin: 0 auto;
+  max-width: 760px;
+  margin: 0 auto 2em;
+  background-color: #fff;
 }
 .post__header {
   margin-bottom: 4em;
@@ -13173,6 +13184,7 @@ figcaption {
   color: #6c757d;
 }
 .post__image {
+  min-height: 300px;
   height: auto;
   width: 100%;
 }
@@ -13213,15 +13225,17 @@ figcaption {
   flex-wrap: wrap;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 770px) {
   .post__image {
     height: 420px;
   }
 
   .post__container {
-    padding: 2em 1em;
-    border-left: 1px solid #f5f5ff;
-    border-right: 1px solid #f5f5ff;
+    padding-left: 2em;
+    padding-right: 2em;
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+    background-color: #f8f9fa;
   }
 }
 /**************** 
@@ -13252,6 +13266,12 @@ figcaption {
   margin-left: 0.5em;
   -webkit-text-decoration: 2px underline #0d1267;
   text-decoration: 2px underline #0d1267;
+}
+.comment-metadata, .comment-reply-link, .comment-edit-link {
+  font-size: 0.875rem;
+}
+.comment-content p {
+  font-size: clamp(0.875rem, 2vw, 1rem);
 }
 
 .has-blue-color,
