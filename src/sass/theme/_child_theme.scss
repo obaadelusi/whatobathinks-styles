@@ -97,7 +97,7 @@ a {
 figcaption {
    text-align: center;
    font-size: 0.875rem;
-   color: $gray-500;
+   color: $gray-600;
 }
 
 /**************** 
@@ -132,7 +132,6 @@ figcaption {
 
    &--sec {
       @extend .button;
-      font-size: $font-size-small;
       color: $primary;
       border: 2px solid $secondary;
       background-color: $white;
@@ -270,7 +269,7 @@ figcaption {
       opacity: 0;
       pointer-events: none;
       position: absolute;
-      top: 75%;
+      top: 74%;
       transform: scaleY(0);
       transform-origin: top center;
       transition: transform 200ms ease-in-out, opacity 200ms ease;
@@ -342,7 +341,8 @@ figcaption {
          font-weight: bold;
          letter-spacing: 1.5px;
          line-height: 1.2;
-         color: #0d1267;
+         color: $primary;
+         margin-bottom: 0;
 
          span {
             color: $secondary;
@@ -365,11 +365,13 @@ figcaption {
    }
 
    &__points {
+      display: flex;
+      gap: 1.25em;
       list-style: none;
       padding: 0;
       i {
          color: $secondary;
-         margin-right: 5px;
+         margin-right: 4px;
       }
    }
 
@@ -396,10 +398,6 @@ figcaption {
       justify-content: center;
       &__profile {
          margin-top: -3em;
-      }
-      &__points {
-         display: flex;
-         gap: 20px;
       }
       &__cta {
          flex-direction: row;
@@ -572,6 +570,9 @@ figcaption {
          color: $gray-800;
          font-weight: 500;
       }
+      &__excerpt {
+         font-family: $font-family-serif;
+      }
       p a {
          color: $blue-500;
       }
@@ -709,13 +710,14 @@ figcaption {
       flex-direction: column;
       justify-content: center;
       width: 90%;
-      max-width: 800px;
+      max-width: 860px;
       padding: 2em 0;
       margin: auto;
    }
 
    &__single {
-      margin-bottom: 3em;
+      border-bottom: 1px solid $gray-300;
+      padding: 2em 0 2em;
    }
 
    &__image {
@@ -742,7 +744,7 @@ figcaption {
    }
 
    &__title {
-      font-size: $h3-font-size;
+      font-size: clamp(1.375rem, 2.5vw, 1.875rem);
    }
 }
 
@@ -751,10 +753,15 @@ figcaption {
       &__single {
          display: flex;
          gap: 2em;
+         justify-content: space-between;
       }
       &__image {
          flex: 0 0 35%;
          height: 180px;
+         order: 2;
+      }
+      &__info {
+         order: 1;
       }
    }
 }
@@ -780,7 +787,7 @@ figcaption {
    }
 
    &__header {
-      margin-bottom: 4em;
+      margin-bottom: 2em;
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -796,7 +803,6 @@ figcaption {
    }
 
    &__image {
-      min-height: 300px;
       height: auto;
       width: 100%;
       img {
@@ -810,6 +816,8 @@ figcaption {
       p,
       li {
          font-size: $font-size-large;
+         font-family: $font-family-serif;
+         color: $gray-800;
       }
       a {
          color: $blue-500;
@@ -826,13 +834,7 @@ figcaption {
       background-color: $gray-200;
       padding: 1em !important;
       border-radius: 0.5em;
-      &__heading {
-         margin-bottom: 1em;
-         font-size: $font-size-large;
-         i {
-            color: $secondary;
-         }
-      }
+
       &__buttons {
          display: flex;
          gap: 0.5em;
@@ -842,15 +844,35 @@ figcaption {
 }
 
 @media (min-width: 770px) {
-   .post__image {
-      height: 420px;
-   }
-   .post__container {
-      padding-left: 2em;
-      padding-right: 2em;
-      border-left: 1px solid $gray-300;
-      border-right: 1px solid $gray-300;
-      background-color: $gray-100;
+   .post {
+      position: relative;
+
+      &__image {
+         height: 420px;
+      }
+      &__container {
+         padding-left: 2em;
+         padding-right: 2em;
+         border-left: 1px solid $gray-300;
+         border-right: 1px solid $gray-300;
+         background-color: $gray-100;
+      }
+      &__share {
+         position: absolute;
+         top: 0.25em;
+         right: 0.25em;
+         background: transparent;
+         width: fit-content !important;
+
+         &__buttons {
+            > * {
+               font-size: 0.875rem;
+            }
+            > :last-child {
+               display: none;
+            }
+         }
+      }
    }
 }
 
@@ -861,7 +883,6 @@ figcaption {
 .post__related,
 .post__share {
    max-width: 720px;
-   width: 90%;
    margin: 0 auto;
    padding: 2em 0;
 }

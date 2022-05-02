@@ -50,11 +50,11 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  font-size: clamp(1.875rem, 3vw, 2.375rem);
+  font-size: clamp(1.875rem, 3vw, 2.25rem);
 }
 
 h3, .h3 {
-  font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+  font-size: clamp(1.375rem, 2vw, 1.875rem);
 }
 
 h4, .h4 {
