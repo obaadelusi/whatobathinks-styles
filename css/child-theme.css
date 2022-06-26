@@ -11530,6 +11530,7 @@ html {
 body {
   font-family: "Public Sans", sans-serif;
   height: 100%;
+  background-color: #f8f9fa;
 }
 
 .site {
@@ -11556,7 +11557,7 @@ h4,
 
 h1, .h1 {
   font-size: clamp(2.375rem, 4vw, 3rem);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -1px;
 }
 
@@ -11698,8 +11699,24 @@ code {
   border-left: 6px solid #0d1267;
   padding-left: 1em;
   margin-bottom: 1.5em;
+  position: relative;
+  max-width: 480px;
+}
+.wp-block-quote::after {
+  content: "\f10e";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+  color: #fca311;
+  font-size: 2em;
+  opacity: 0.3;
+  position: absolute;
+  top: -22px;
+  left: 10px;
 }
 .wp-block-quote p {
+  font-family: "Merriweather", serif;
   margin-bottom: 0.5em;
 }
 
@@ -11709,9 +11726,12 @@ code {
   max-width: 480px;
   margin: 0 auto 1.5em;
 }
+.wp-block-pullquote p {
+  font-family: "Merriweather", serif;
+}
 .wp-block-pullquote cite {
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-style: normal;
   letter-spacing: 1px;
   position: static;
@@ -11996,34 +12016,44 @@ code {
   background-color: #fff;
 }
 .portfolio__container {
-  max-width: 1080px;
+  max-width: 1130px;
+  margin-inline: auto;
 }
 .portfolio__heading, .portfolio__description {
   text-align: center;
 }
-.portfolio__project {
-  margin-bottom: 4em;
+.portfolio__subheading {
+  margin-bottom: 1em;
 }
-.portfolio__project img {
-  margin: 0.5em auto;
+.portfolio__projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+  margin: 0 auto 2em;
+}
+.portfolio__card {
   width: 100%;
+  max-width: 360px;
+  border: 1px solid #ced4da;
+  border-radius: 0.5em;
+  overflow: hidden;
+  margin-bottom: 1em;
 }
-.portfolio__project p {
+.portfolio__card_info {
+  padding: 1em;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+}
+.portfolio__card p {
   margin-bottom: 0;
 }
-.portfolio a {
+.portfolio__more_text a {
   color: #0d6efd;
   background-color: #e9ecef;
   border-radius: 0.5em;
   padding: 0.125em 0.5em;
 }
 
-@media (min-width: 820px) {
-  .portfolio {
-    display: flex;
-    justify-content: center;
-  }
-}
 /**************** 
       Blog 
 ****************/
@@ -12032,6 +12062,7 @@ code {
   justify-content: center;
   align-items: center;
   padding: 60px 20px;
+  background-color: #fff;
 }
 .blogs__container {
   max-width: 700px;
@@ -12047,7 +12078,9 @@ code {
   font-weight: 500;
 }
 .blogs__post__excerpt {
-  font-family: "Source Serif Pro", sans-serif;
+  font-family: "Merriweather", serif;
+  font-size: 1rem;
+  color: #6c757d;
 }
 .blogs__post p a {
   color: #0d6efd;
@@ -12170,6 +12203,7 @@ code {
       Posts 
 ****************/
 .posts {
+  background-color: #fff;
   /* Form & Loading Animation */
 }
 .posts__header {
@@ -12330,15 +12364,15 @@ code {
   margin-bottom: 0.25em 0 0.5em;
 }
 .posts__meta i {
-  color: #fca311;
+  color: #adb5bd;
 }
-.posts__meta__text {
+.posts__meta__text a {
   font-size: 0.75rem;
   color: #6c757d;
   text-transform: uppercase;
 }
 .posts__title {
-  font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+  font-size: clamp(1.375rem, 3vw, 1.875rem);
 }
 
 .pagination {
@@ -12371,10 +12405,10 @@ code {
   margin-top: 0.5em;
 }
 .post__container {
-  padding: 2em 0 0.5em;
+  padding: 2em 0;
   width: 100%;
   max-width: 760px;
-  margin: 0 auto 2em;
+  margin: 0 auto;
   background-color: #fff;
 }
 .post__header {
@@ -12401,11 +12435,16 @@ code {
 }
 .post__content p,
 .post__content li {
-  font-family: "Source Serif Pro", sans-serif;
+  font-family: "Merriweather", serif;
   color: #343a40;
+  font-size: 1rem;
+  line-height: 1.75;
 }
 .post__content a {
   color: #0d6efd;
+}
+.post__content .wp-block-image {
+  margin-bottom: 2em;
 }
 .post__tags {
   background-color: #f8f9fa;
@@ -12414,7 +12453,7 @@ code {
   margin-top: 3em;
 }
 .post__share {
-  background-color: #e9ecef;
+  background-color: #f8f9fa;
   padding: 1em !important;
   border-radius: 0.5em;
 }
@@ -12425,9 +12464,16 @@ code {
 }
 .post__related {
   max-width: 720px;
-  margin-bottom: 2em;
+  margin-bottom: 4em;
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
 
+@media (max-width: 770px) {
+  .container {
+    background-color: #fff;
+  }
+}
 @media (min-width: 770px) {
   .post {
     position: relative;
@@ -12451,9 +12497,6 @@ code {
     left: 0.75em;
     background: transparent;
   }
-  .post__share__heading {
-    display: none;
-  }
   .post__share__buttons {
     max-width: 120px;
   }
@@ -12469,9 +12512,21 @@ code {
 ****************/
 .comments-area,
 .post__share {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
   padding: 2em 0;
+}
+@media (min-width: 540px) {
+  .comments-area,
+.post__share {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}
+
+.comments-area {
+  background-color: #fff;
+  margin-bottom: 1em;
 }
 
 .comment {
