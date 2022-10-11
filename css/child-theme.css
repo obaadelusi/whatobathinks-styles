@@ -106,7 +106,7 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 }
 
 h1, .h1 {
-  font-size: clamp(2.375rem, 4vw, 3rem);
+  font-size: clamp(2.375rem, 3vw, 3rem);
 }
 
 h2, .h2 {
@@ -7536,7 +7536,7 @@ textarea.form-control-lg {
 }
 
 .fs-1 {
-  font-size: clamp(2.375rem, 4vw, 3rem) !important;
+  font-size: clamp(2.375rem, 3vw, 3rem) !important;
 }
 
 .fs-2 {
@@ -11467,7 +11467,7 @@ h4,
 }
 
 h1, .h1 {
-  font-size: clamp(2.375rem, 4vw, 3rem);
+  font-size: clamp(2.375rem, 3vw, 3rem);
   font-weight: 400;
   letter-spacing: -1px;
 }
@@ -11999,7 +11999,6 @@ optgroup {
   font-weight: 500;
 }
 .blogs__post__excerpt {
-  font-family: "Merriweather", serif;
   font-size: 1rem;
   color: #6c757d;
 }
@@ -12309,6 +12308,9 @@ optgroup {
 .post :is(h2, .h2, h3, .h3, h4, .h4) + :is(p, ul, ol) {
   margin-top: 0.5em;
 }
+.post :is(h1, .h1, h2, .h2, h3, .h3, h4, .h4) {
+  font-family: "Merriweather", serif;
+}
 .post__image {
   height: 120px;
   width: 100%;
@@ -12334,7 +12336,8 @@ optgroup {
   background-color: #fff;
 }
 .post__header {
-  margin: 0 0 2em;
+  padding: 1em 1.25vw;
+  border-bottom: 1px solid #e9ecef;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -12342,22 +12345,17 @@ optgroup {
 .post__header > * {
   margin: 0;
 }
-.post__breadcrumbs {
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 0.5em 1em;
-  border-radius: 4px;
-  background-color: #fff;
-  margin-top: -1.25em;
-}
 .post__breadcrumbs *, .post__meta, .post__excerpt {
   color: #6c757d;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+}
+.post__content {
+  padding: 1.5em 1.25vw;
 }
 .post__content p,
 .post__content li {
-  font-family: "Merriweather", serif;
-  color: #343a40;
-  font-size: 1rem;
+  color: #212529;
+  font-size: clamp(1rem, 2vw, 1.125rem);
   line-height: 1.75;
 }
 .post__content a {
@@ -12383,10 +12381,11 @@ optgroup {
   flex-wrap: wrap;
 }
 .post__related {
-  max-width: 720px;
+  max-width: 740px;
   margin-bottom: 4em;
   padding-top: 2em;
   padding-bottom: 2em;
+  background-color: #fff;
 }
 
 @media (max-width: 770px) {
@@ -12404,6 +12403,11 @@ optgroup {
   }
   .post .container {
     max-width: 740px;
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+  }
+
+  .comments-area {
     border-left: 1px solid #dee2e6;
     border-right: 1px solid #dee2e6;
   }
