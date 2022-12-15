@@ -71,7 +71,7 @@ li {
     font-size: $font-size-regular;
     font-weight: 400;
     line-height: 1.5;
-    color: $gray-700;
+    color: $gray-900;
 }
 p {
     margin-bottom: 1.5em;
@@ -238,6 +238,11 @@ optgroup {
         letter-spacing: 1px;
         position: static;
     }
+}
+
+.wp-block-separator {
+    margin: 2.5em;
+    opacity: 0.35;
 }
 
 /*==============================
@@ -949,11 +954,8 @@ optgroup {
       Article 
 ****************/
 .post {
-    :is(h2, h3, h4) + :is(p, ul, ol) {
+    :is(h2, h3, h4) + :is(p, ul, ol, div, pre) {
         margin-top: 0.5em;
-    }
-    :is(h1, h2, h3, h4) {
-        font-family: $font-family-serif;
     }
 
     &__image {
@@ -980,6 +982,27 @@ optgroup {
         background-color: $white;
     }
 
+    &__note {
+        border-width: 0 0 0 5px;
+        border-style: solid;
+        border-radius: 4px;
+        padding: 0.25em 1.25em;
+        font-size: $font-size-small !important;
+
+        &--primary {
+            @extend .post__note;
+            border-left-color: $primary;
+            background-color: $primary-100;
+        }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: $font-family-serif;
+    }
+
     &__header {
         padding: 1em 1.25vw;
         border-bottom: 1px solid $gray-200;
@@ -1003,7 +1026,6 @@ optgroup {
         padding: 1.5em 1.25vw;
         p,
         li {
-            color: $gray-900;
             font-size: $font-size-regular;
             line-height: 1.75;
         }
@@ -1020,7 +1042,7 @@ optgroup {
         background-color: $gray-100;
         padding: 1em;
         border-radius: 0.5em;
-        margin-top: 3em;
+        margin-top: 2em;
     }
 
     &__share {
@@ -1147,4 +1169,8 @@ div.enlighter-v-standard {
 
 div.enlighter-default {
     border-radius: 0.375em;
+}
+
+div[data-type='enlighter/codeblock'] {
+    max-width: 840px;
 }
